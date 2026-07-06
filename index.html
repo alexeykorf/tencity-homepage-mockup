@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TENCITY — Homepage mockup</title>
+<style>
+/* ============================================================
+   TENCITY — homepage mockup (Phase 1)
+   DS-Mineralöl-style clean layout, evolving the TENCITY navy identity.
+   Brand tokens recovered from the real style.min.css.
+   These map 1:1 to the future theme.json.
+   ============================================================ */
+
+/* Real brand fonts, served from the live theme (fallbacks if offline) */
+@font-face{font-family:"Circe";src:url("https://tencity.at/wp-content/themes/tencity/assets/fonts/Circe-Light.woff2") format("woff2");font-weight:300;font-display:swap}
+@font-face{font-family:"Circe";src:url("https://tencity.at/wp-content/themes/tencity/assets/fonts/Circe-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"HelveticaNeueLt";src:url("https://tencity.at/wp-content/themes/tencity/assets/fonts/HelveticaNeue-Light.woff2") format("woff2");font-weight:300;font-display:swap}
+
+:root{
+  /* ---- colour tokens (from style.min.css) ---- */
+  --navy:#143346;          /* signature brand colour */
+  --navy-2:#143449;
+  --blue:#005482;
+  --blue-mid:#0571ac;
+  --blue-pale:#99C7E0;
+  --green:#59B171;         /* accent — sustainability / ISCC */
+  --warm:#ECAE80;          /* secondary highlight */
+  --ink:#313131;
+  --grey:#747474;
+  --tint:#f1f5f8;          /* pale blue-grey section bg */
+  --line:#e2e8ee;
+  --white:#ffffff;
+
+  /* ---- type ---- */
+  --font-head:"Circe","HelveticaNeueLt","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --font-body:"HelveticaNeueLt","Helvetica Neue",Helvetica,Arial,sans-serif;
+
+  /* ---- spacing / layout ---- */
+  --maxw:1180px;
+  --gap:28px;
+  --radius:6px;
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;font-family:var(--font-body);color:var(--ink);
+  background:var(--white);line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased;
+}
+h1,h2,h3,h4{font-family:var(--font-head);font-weight:700;color:var(--navy);line-height:1.15;margin:0 0 .5em}
+h1{font-size:clamp(2.1rem,4.6vw,3.4rem)}
+h2{font-size:clamp(1.6rem,3vw,2.3rem)}
+h3{font-size:1.25rem}
+p{margin:0 0 1em}
+a{color:var(--blue);text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+.eyebrow{font-family:var(--font-head);font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  font-size:.78rem;color:var(--green);margin:0 0 .8em}
+.section{padding:84px 0}
+.section--tint{background:var(--tint)}
+.lead{font-size:1.22rem;color:var(--navy);max-width:760px}
+
+/* buttons */
+.btn{display:inline-block;font-family:var(--font-head);font-weight:700;font-size:.95rem;
+  padding:14px 28px;border-radius:var(--radius);transition:.18s;cursor:pointer;border:2px solid transparent}
+.btn--primary{background:var(--green);color:#fff}
+.btn--primary:hover{background:#48a061}
+.btn--ghost{background:transparent;color:#fff;border-color:rgba(255,255,255,.55)}
+.btn--ghost:hover{border-color:#fff;background:rgba(255,255,255,.1)}
+.btn--navy{background:var(--navy);color:#fff}
+.btn--navy:hover{background:#0d2635}
+
+/* ============ header ============ */
+.topbar{background:var(--navy);color:#cfe0ea;font-size:.83rem}
+.topbar .wrap{display:flex;justify-content:flex-end;gap:22px;padding-top:8px;padding-bottom:8px}
+.topbar a{color:#cfe0ea}
+.topbar .lang a{font-weight:700}
+.topbar .lang a.active{color:#fff}
+header.nav{position:sticky;top:0;z-index:50;background:#fff;border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-top:16px;padding-bottom:16px}
+.logo{display:inline-flex;align-items:center}
+.logo img{height:42px;width:auto;display:block}
+.menu{display:flex;gap:30px;list-style:none;margin:0;padding:0}
+.menu a{color:var(--navy);font-family:var(--font-head);font-weight:700;font-size:.95rem}
+.menu a:hover{color:var(--green)}
+.nav .btn{padding:11px 22px}
+
+/* ============ hero ============ */
+.hero{position:relative;color:#fff;min-height:560px;display:flex;align-items:center;
+  background:linear-gradient(180deg,rgba(20,51,70,.72),rgba(20,51,70,.82)),
+  url("./assets/iStock-1488142909.jpg") center/cover no-repeat}
+.hero .wrap{padding-top:70px;padding-bottom:70px}
+.hero h1{color:#fff;max-width:15ch}
+.hero p{font-size:1.28rem;color:#e7eef3;max-width:60ch;margin-bottom:2em}
+.hero .cta-row{display:flex;gap:16px;flex-wrap:wrap}
+
+/* ============ intro ============ */
+.intro-grid{display:grid;grid-template-columns:1.4fr 1fr;gap:56px;align-items:center}
+.intro-side{background:var(--navy);color:#fff;border-radius:var(--radius);padding:34px 32px}
+.intro-side h3{color:#fff}
+.intro-side p{color:#cfe0ea;margin-bottom:0}
+
+/* ============ product cards ============ */
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--gap)}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:28px 24px;transition:.18s}
+.card:hover{box-shadow:0 12px 30px rgba(20,51,70,.10);transform:translateY(-3px)}
+.card .tag{display:inline-block;background:var(--navy);color:#fff;font-family:var(--font-head);font-weight:700;
+  font-size:.72rem;letter-spacing:.05em;padding:5px 11px;border-radius:4px;margin-bottom:16px}
+.card h3{margin-bottom:.3em}
+.card p{font-size:.96rem;color:var(--grey);margin-bottom:0}
+.card .more{display:inline-block;margin-top:16px;font-family:var(--font-head);font-weight:700;font-size:.9rem;color:var(--green)}
+
+/* ============ stats band ============ */
+.stats{background:var(--navy);color:#fff}
+.stats .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center}
+.stat .num{font-family:var(--font-head);font-weight:700;font-size:2.6rem;color:#fff;line-height:1}
+.stat .lbl{color:var(--blue-pale);font-size:.95rem;margin-top:8px}
+.stat .num small{font-size:1.1rem;color:var(--green)}
+
+/* ============ why / features ============ */
+.feat{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.feat-item{padding:6px 4px}
+.ico{width:48px;height:48px;border-radius:10px;background:rgba(89,177,113,.14);
+  display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.ico svg{width:26px;height:26px;stroke:var(--green);fill:none;stroke-width:1.8}
+.feat-item h3{font-size:1.1rem}
+.feat-item p{font-size:.98rem;color:var(--grey);margin-bottom:0}
+
+/* ============ sustainability ============ */
+.sustain{background:linear-gradient(120deg,#0f2a3a,#143346);color:#fff}
+.sustain .wrap{display:grid;grid-template-columns:1.3fr 1fr;gap:48px;align-items:center}
+.sustain h2{color:#fff}
+.sustain p{color:#cfe0ea}
+.sustain .badge{background:#fff;border-radius:var(--radius);padding:26px;text-align:center}
+.sustain .badge img{max-width:200px;height:auto}
+.sustain .badge span{display:block;margin-top:12px;color:var(--navy);font-family:var(--font-head);font-weight:700;font-size:.92rem}
+.pill{display:inline-block;border:1px solid rgba(255,255,255,.35);color:#fff;border-radius:40px;
+  padding:6px 15px;font-size:.85rem;margin:0 8px 8px 0}
+
+/* ============ quote ============ */
+.quote .wrap{display:grid;grid-template-columns:150px 1fr;gap:36px;align-items:center}
+.quote img{width:150px;height:150px;object-fit:cover;border-radius:50%;border:4px solid var(--tint)}
+.quote blockquote{margin:0;font-family:var(--font-head);font-weight:300;font-size:1.5rem;color:var(--navy);line-height:1.4}
+.quote cite{display:block;margin-top:16px;font-style:normal;font-size:.98rem;color:var(--grey)}
+.quote cite b{color:var(--navy);font-family:var(--font-head)}
+
+/* ============ news ============ */
+.news-head{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:36px}
+.news{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap)}
+.ncard{background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:.18s}
+.ncard:hover{box-shadow:0 12px 30px rgba(20,51,70,.10);transform:translateY(-3px)}
+.ncard .img{height:170px;background-size:cover;background-position:center}
+.ncard .body{padding:22px 20px}
+.ncard .date{font-size:.8rem;color:var(--green);font-family:var(--font-head);font-weight:700;letter-spacing:.05em;text-transform:uppercase}
+.ncard h3{font-size:1.08rem;margin:.4em 0 0}
+
+/* ============ footer ============ */
+footer{background:var(--navy);color:#aec4d2;font-size:.94rem;padding:64px 0 28px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.1fr;gap:36px}
+footer h4{color:#fff;font-size:1rem;margin-bottom:14px}
+footer a{color:#aec4d2}
+footer a:hover{color:#fff}
+footer .logo{color:#fff;margin-bottom:14px}
+.fcol ul{list-style:none;margin:0;padding:0}
+.fcol li{margin-bottom:8px}
+.fbot{border-top:1px solid rgba(255,255,255,.12);margin-top:44px;padding-top:22px;
+  display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.85rem;color:#7f9aab}
+
+/* ============ responsive ============ */
+@media(max-width:900px){
+  .cards,.feat,.news,.stats .wrap{grid-template-columns:repeat(2,1fr)}
+  .intro-grid,.sustain .wrap,.quote .wrap{grid-template-columns:1fr}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .menu{display:none}
+}
+@media(max-width:560px){
+  .cards,.feat,.news,.stats .wrap,.fgrid{grid-template-columns:1fr}
+  .section{padding:56px 0}
+}
+.note{background:#fff8ee;border:1px dashed var(--warm);color:#8a5a2a;font-size:.85rem;
+  padding:10px 16px;text-align:center}
+</style>
+</head>
+<body>
+
+<!-- mockup note -->
+<div class="note">Static mockup · Phase 1 direction preview · tokens &amp; content map directly to the future WordPress block theme</div>
+
+<!-- top bar -->
+<div class="topbar"><div class="wrap">
+  <span>Tel.: +43 1 715 6352</span>
+  <span>info@tencity.at</span>
+  <span class="lang"><a href="#" class="active">EN</a> / <a href="#">DE</a></span>
+</div></div>
+
+<!-- nav -->
+<header class="nav"><div class="wrap">
+  <a href="#" class="logo"><img src="./assets/Logo-white-bg.jpg" alt="TENCITY Energiehandel GmbH"></a>
+  <ul class="menu">
+    <li><a href="#products">Products</a></li>
+    <li><a href="#solutions">Solutions</a></li>
+    <li><a href="#sustain">Sustainability</a></li>
+    <li><a href="#news">News</a></li>
+    <li><a href="#">About</a></li>
+  </ul>
+  <a href="#" class="btn btn--primary">Request a quote</a>
+</div></header>
+
+<!-- hero -->
+<section class="hero"><div class="wrap">
+  <h1>Our energy, delivered across the heart of Europe.</h1>
+  <p>TENCITY manages hydrocarbons and renewables supply chains to deliver fuels to you — in a timely and safe manner. Enriched with our own energy.</p>
+  <div class="cta-row">
+    <a href="#products" class="btn btn--primary">Explore products</a>
+    <a href="#" class="btn btn--ghost">Talk to us</a>
+  </div>
+</div></section>
+
+<!-- intro -->
+<section class="section"><div class="wrap intro-grid">
+  <div>
+    <p class="eyebrow">Who we are</p>
+    <h2>An owner-run fuel supplier, domiciled in Austria.</h2>
+    <p class="lead">We supply diesel, gasoline, HVO and premium lubricants to buyers across Germany, Czechia, Slovakia, Poland and Austria — sourced from German refineries, Northern German ports and leading HVO producers, delivered by rail and truck.</p>
+    <p style="color:var(--grey)">No order too small, no detail overlooked. We aggregate demand from small and medium fuel buyers across CEE and pass the better prices on to you.</p>
+  </div>
+  <div class="intro-side">
+    <h3>Registered in Vienna</h3>
+    <p>Austria ranks at the top for transparency, legal certainty and banking service — so you get a reliable, secure relationship with a prime-jurisdiction company.</p>
+  </div>
+</div></section>
+
+<!-- products -->
+<section class="section section--tint" id="products"><div class="wrap">
+  <p class="eyebrow">Our energy, your choice</p>
+  <h2 style="margin-bottom:.7em">Products</h2>
+  <div class="cards">
+    <div class="card">
+      <span class="tag">EN 590 · B0/B7</span>
+      <h3>Diesel</h3>
+      <p>Bio-free B0 and B7 blended with EU-certified bio feedstocks. Delivered by block train or single truck.</p>
+      <span class="more">Learn more →</span>
+    </div>
+    <div class="card">
+      <span class="tag">EN 228 · E5/E10</span>
+      <h3>Gasoline</h3>
+      <p>Blended with EU-certified bio feedstocks, sourced direct from German refineries and ports.</p>
+      <span class="more">Learn more →</span>
+    </div>
+    <div class="card">
+      <span class="tag">EN 15940:2023</span>
+      <h3>HVO</h3>
+      <p>Renewable diesel from leading HVO producers in the ARA region — ISCC-certified supply chain.</p>
+      <span class="more">Learn more →</span>
+    </div>
+    <div class="card">
+      <span class="tag">Made in Italy</span>
+      <h3>SANEG Lubricants</h3>
+      <p>Official distributor of SANEG Oil Italy premium lubricants &amp; greases — automotive to marine.</p>
+      <span class="more">Learn more →</span>
+    </div>
+  </div>
+</div></section>
+
+<!-- stats band -->
+<section class="stats section" style="padding:56px 0"><div class="wrap">
+  <div class="stat"><div class="num">2023</div><div class="lbl">Founded in Vienna</div></div>
+  <div class="stat"><div class="num">37,000<small> mt</small></div><div class="lbl">Annual volumes</div></div>
+  <div class="stat"><div class="num">5</div><div class="lbl">Markets: DE · CZ · SK · PL · AT</div></div>
+  <div class="stat"><div class="num">ISCC</div><div class="lbl">EU-certified trader</div></div>
+</div></section>
+
+<!-- why -->
+<section class="section"><div class="wrap">
+  <p class="eyebrow">Why choose TENCITY</p>
+  <h2 style="margin-bottom:1.2em">We put your needs first.</h2>
+  <div class="feat">
+    <div class="feat-item">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 12h18M12 3v18"/><circle cx="12" cy="12" r="9"/></svg></div>
+      <h3>Better prices</h3>
+      <p>We aggregate demand from small and medium buyers across CEE and pass the savings on to you.</p>
+    </div>
+    <div class="feat-item">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h10"/></svg></div>
+      <h3>Direct relationships</h3>
+      <p>We deal directly with the key refineries and ports in Germany, choosing the best source at every moment.</p>
+    </div>
+    <div class="feat-item">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7v5h-5"/></svg></div>
+      <h3>Flexible pricing</h3>
+      <p>Fixed price, spot, or ICE triggering — more control and value, with overheads kept low.</p>
+    </div>
+    <div class="feat-item">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6z"/></svg></div>
+      <h3>Owner-managed</h3>
+      <p>Run by its shareholders — the people doing the day-to-day work. Your success is our success.</p>
+    </div>
+    <div class="feat-item">
+      <div class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="8" width="13" height="9" rx="1"/><path d="M16 11h3l2 3v3h-5z"/><circle cx="7" cy="18" r="1.6"/><circle cx="17" cy="18" r="1.6"/></svg></div>
+      <h3>Reliable logistics</h3>
+      <p>Block trains and truck networks across key routes into Eastern and Central Europe.</p>
+    </div>
+    <div class="feat-item">
+      <div class="ico"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <h3>Proven reputation</h3>
+      <p>A flawless record with leading German refineries and CEE fuel networks.</p>
+    </div>
+  </div>
+</div></section>
+
+<!-- sustainability -->
+<section class="sustain section" id="sustain"><div class="wrap">
+  <div>
+    <p class="eyebrow">Sustainability</p>
+    <h2>Certified origin, from feedstock to delivery.</h2>
+    <p>Through ISCC EU certification, we give you full transparency and verified origin across our biofuels, HVO and blended diesel and gasoline — the credentials the market increasingly demands.</p>
+    <div style="margin-top:18px">
+      <span class="pill">HVO EN 15940</span>
+      <span class="pill">EU-certified bio feedstocks</span>
+      <span class="pill">Verified supply chain</span>
+    </div>
+    <p style="margin-top:24px"><a href="#" class="btn btn--primary">Our sustainability approach</a></p>
+  </div>
+  <div class="badge">
+    <img src="./assets/ISCC-blue-logo-cropped.png" alt="ISCC certified">
+    <span>Certified trader · ISCC EU</span>
+  </div>
+</div></section>
+
+<!-- quote -->
+<section class="section quote"><div class="wrap">
+  <img src="./assets/Alexey_Kornienkov.webp" alt="Alexey Kornienkov">
+  <div>
+    <blockquote>“We know how to add value without compromising on quality — because we’ve spent decades doing exactly this, and your success is our success.”</blockquote>
+    <cite><b>Alexey Kornienkov</b> — Co-founder, Strategy &amp; Business Development</cite>
+  </div>
+</div></section>
+
+<!-- news -->
+<section class="section section--tint" id="news"><div class="wrap">
+  <div class="news-head">
+    <div>
+      <p class="eyebrow">Latest news</p>
+      <h2 style="margin:0">From the TENCITY desk</h2>
+    </div>
+    <a href="#" class="btn btn--navy">All news</a>
+  </div>
+  <div class="news">
+    <article class="ncard">
+      <div class="img" style="background-image:url('./assets/HVO.jpg')"></div>
+      <div class="body">
+        <span class="date">2025</span>
+        <h3>TENCITY secures first HVO supply deal from the ARA region to Germany</h3>
+      </div>
+    </article>
+    <article class="ncard">
+      <div class="img" style="background-image:url('./assets/Minister-of-Transport-CZ-opening-2.jpg')"></div>
+      <div class="body">
+        <span class="date">2025</span>
+        <h3>Heating-oil deliveries introduced on the new Germany–Czechia route</h3>
+      </div>
+    </article>
+    <article class="ncard">
+      <div class="img" style="background-image:url('./assets/IE-Week-26.jpg')"></div>
+      <div class="body">
+        <span class="date">2026</span>
+        <h3>Looking forward to 2026 with volume growth &amp; portfolio diversification</h3>
+      </div>
+    </article>
+  </div>
+</div></section>
+
+<!-- footer -->
+<footer><div class="wrap">
+  <div class="fgrid">
+    <div class="fcol">
+      <img src="./assets/Logo-transparent.png" alt="TENCITY Energiehandel GmbH" style="height:44px;width:auto;margin-bottom:18px">
+      <p>Lehargasse 7/2/2<br>1060 Wien, Austria</p>
+      <p>Tel.: +43 1 715 6352<br>info@tencity.at</p>
+    </div>
+    <div class="fcol">
+      <h4>Products</h4>
+      <ul>
+        <li><a href="#">Diesel EN 590</a></li>
+        <li><a href="#">Gasoline EN 228</a></li>
+        <li><a href="#">HVO</a></li>
+        <li><a href="#">SANEG Lubricants</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Company</h4>
+      <ul>
+        <li><a href="#">About us</a></li>
+        <li><a href="#">Sustainability</a></li>
+        <li><a href="#">News</a></li>
+        <li><a href="#">Contact / Impressum</a></li>
+      </ul>
+    </div>
+    <div class="fcol">
+      <h4>Certified</h4>
+      <p style="background:#fff;border-radius:6px;padding:14px;display:inline-block">
+        <img src="./assets/ISCC-blue-logo-cropped.png" alt="ISCC" style="max-width:120px;height:auto">
+      </p>
+    </div>
+  </div>
+  <div class="fbot">
+    <span>© 2026 TENCITY Energiehandel GmbH</span>
+    <span>Imprint · Privacy Policy · EN / DE</span>
+  </div>
+</div></footer>
+
+</body>
+</html>
